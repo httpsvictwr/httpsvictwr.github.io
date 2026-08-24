@@ -1,507 +1,307 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-```
-<title>Victor Manuel Avendaño Vázquez</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor Manuel Avendaño Vazquez — CV</title>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-    }
+  :root{
+    --accent:#e74c3c;
+    --dark:#2b2f3a;
+    --gray:#6b7280;
+    --light-bg:#f7f7f8;
+    --border:#e5e5e5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    color:#333;
+    background:#fff;
+  }
+  .page{
+    max-width:1000px;
+    margin:40px auto;
+    padding:0 20px 60px;
+  }
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:3px solid var(--accent);
+    padding-bottom:25px;
+    margin-bottom:30px;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .header-left{flex:1; min-width:260px;}
+  .header-left h1{
+    margin:0 0 8px;
+    font-size:2.4rem;
+    color:var(--dark);
+    letter-spacing:0.5px;
+  }
+  .header-left p.tagline{
+    margin:0;
+    color:var(--gray);
+    font-size:0.98rem;
+    line-height:1.5;
+    max-width:520px;
+  }
+  .photo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--accent);
+    flex-shrink:0;
+  }
+  .contact{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font-size:0.9rem;
+    color:var(--dark);
+    min-width:200px;
+  }
+  .contact span{display:flex; align-items:center; gap:8px;}
+  .contact .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;
+  }
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #0f172a;
-        color: #f8fafc;
-        line-height: 1.6;
-    }
+  .grid{
+    display:grid;
+    grid-template-columns:1.6fr 1fr;
+    gap:50px;
+  }
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr;}
+    header{flex-direction:column; align-items:flex-start;}
+  }
 
-    /* NAVBAR */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(15, 23, 42, 0.90);
-        backdrop-filter: blur(10px);
-        padding: 15px 8%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1000;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
+  h2.section-title{
+    font-size:1.15rem;
+    color:var(--dark);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    border-bottom:2px solid var(--dark);
+    padding-bottom:8px;
+    margin:0 0 20px;
+  }
 
-    nav .logo {
-        font-size: 22px;
-        font-weight: bold;
-        color: #38bdf8;
-    }
+  .entry{margin-bottom:26px;}
+  .entry-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .entry-date{
+    color:var(--accent);
+    font-size:0.82rem;
+    font-weight:600;
+  }
+  .entry-loc{
+    color:var(--gray);
+    font-size:0.82rem;
+  }
+  .entry h3{
+    margin:4px 0 0;
+    font-size:1.05rem;
+    color:var(--dark);
+  }
+  .entry .org{
+    font-weight:600;
+    color:#444;
+    margin:0 0 8px;
+  }
+  .entry ul{
+    margin:6px 0 0;
+    padding-left:18px;
+    color:#4a4a4a;
+    font-size:0.92rem;
+    line-height:1.55;
+  }
 
-    nav ul {
-        display: flex;
-        list-style: none;
-        gap: 25px;
-    }
+  .skill{margin-bottom:16px;}
+  .skill-label{
+    font-size:0.9rem;
+    margin-bottom:6px;
+    color:var(--dark);
+  }
+  .bar{
+    background:var(--border);
+    border-radius:4px;
+    height:9px;
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;
+    background:var(--accent);
+    border-radius:4px;
+  }
 
-    nav ul li a {
-        text-decoration: none;
-        color: #f8fafc;
-        transition: 0.3s;
-    }
+  .achievement{margin-bottom:16px;}
+  .achievement h4{
+    margin:0 0 4px;
+    font-size:0.95rem;
+    color:var(--dark);
+  }
+  .achievement p{
+    margin:0;
+    font-size:0.85rem;
+    color:var(--gray);
+    line-height:1.4;
+  }
 
-    nav ul li a:hover {
-        color: #38bdf8;
-    }
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag{
+    background:var(--light-bg);
+    border:1px solid var(--border);
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:0.82rem;
+    color:var(--dark);
+  }
 
-    /* HERO */
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 100px 20px 50px;
-        background: radial-gradient(circle at top, #1e3a8a, #0f172a 60%);
-    }
-
-    .hero-content {
-        max-width: 850px;
-    }
-
-    .hero h1 {
-        font-size: clamp(40px, 7vw, 72px);
-        margin-bottom: 10px;
-    }
-
-    .hero h1 span {
-        color: #38bdf8;
-    }
-
-    .hero h2 {
-        font-size: 25px;
-        color: #cbd5e1;
-        margin-bottom: 20px;
-        font-weight: normal;
-    }
-
-    .hero p {
-        max-width: 650px;
-        margin: auto;
-        color: #94a3b8;
-        font-size: 18px;
-    }
-
-    .btn {
-        display: inline-block;
-        margin-top: 30px;
-        padding: 13px 25px;
-        background: #38bdf8;
-        color: #0f172a;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
-    }
-
-    /* GENERAL */
-    section {
-        padding: 90px 8%;
-    }
-
-    .section-title {
-        text-align: center;
-        font-size: 38px;
-        margin-bottom: 50px;
-    }
-
-    .section-title span {
-        color: #38bdf8;
-    }
-
-    /* ABOUT */
-    .about {
-        max-width: 950px;
-        margin: auto;
-        text-align: center;
-        color: #cbd5e1;
-        font-size: 18px;
-    }
-
-    /* CARDS */
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-        gap: 25px;
-        max-width: 1100px;
-        margin: auto;
-    }
-
-    .card {
-        background: #1e293b;
-        padding: 30px;
-        border-radius: 18px;
-        border: 1px solid rgba(255,255,255,0.08);
-        transition: 0.3s;
-    }
-
-    .card:hover {
-        transform: translateY(-7px);
-        border-color: #38bdf8;
-    }
-
-    .card h3 {
-        color: #38bdf8;
-        margin-bottom: 12px;
-        font-size: 22px;
-    }
-
-    .card p {
-        color: #cbd5e1;
-    }
-
-    /* STUDIES */
-    .study-box {
-        max-width: 900px;
-        margin: auto;
-        background: linear-gradient(135deg, #1e293b, #172554);
-        padding: 40px;
-        border-radius: 20px;
-        text-align: center;
-        border: 1px solid rgba(56,189,248,0.2);
-    }
-
-    .study-box h3 {
-        font-size: 28px;
-        margin-bottom: 15px;
-    }
-
-    .study-box p {
-        color: #cbd5e1;
-        font-size: 17px;
-    }
-
-    /* HOBBIES */
-    .hobbies {
-        max-width: 1000px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 20px;
-    }
-
-    .hobby {
-        text-align: center;
-        background: #1e293b;
-        padding: 25px;
-        border-radius: 15px;
-        transition: 0.3s;
-    }
-
-    .hobby:hover {
-        transform: scale(1.04);
-    }
-
-    .hobby .icon {
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
-
-    .hobby h3 {
-        color: #f8fafc;
-    }
-
-    /* GOALS */
-    .goals {
-        max-width: 850px;
-        margin: auto;
-    }
-
-    .goal {
-        background: #1e293b;
-        margin-bottom: 15px;
-        padding: 20px 25px;
-        border-left: 5px solid #38bdf8;
-        border-radius: 10px;
-    }
-
-    .goal strong {
-        color: #38bdf8;
-    }
-
-    /* FOOTER */
-    footer {
-        text-align: center;
-        padding: 35px 20px;
-        background: #020617;
-        color: #64748b;
-    }
-
-    footer span {
-        color: #38bdf8;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 700px) {
-        nav {
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        nav ul {
-            gap: 12px;
-            font-size: 14px;
-        }
-
-        section {
-            padding: 70px 5%;
-        }
-    }
+  footer{
+    text-align:center;
+    margin-top:50px;
+    color:var(--gray);
+    font-size:0.8rem;
+  }
 </style>
-```
-
 </head>
-
 <body>
+<div class="page">
 
-```
-<!-- NAVEGACIÓN -->
-<nav>
-    <div class="logo">VMAV</div>
-
-    <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#sobre-mi">Sobre mí</a></li>
-        <li><a href="#estudios">Estudios</a></li>
-        <li><a href="#intereses">Intereses</a></li>
-        <li><a href="#metas">Metas</a></li>
-    </ul>
-</nav>
-
-<!-- INICIO -->
-<section class="hero" id="inicio">
-    <div class="hero-content">
-
-        <h1>Hola, soy <span>Victor</span></h1>
-
-        <h2>Estudiante de Ingeniería en Software</h2>
-
-        <p>
-            Bienvenido a mi página personal. Soy Victor Manuel Avendaño Vázquez,
-            estudiante de la Universidad Veracruzana, apasionado por la tecnología,
-            las matemáticas y el mundo de la programación.
-        </p>
-
-        <a href="#sobre-mi" class="btn">Conóceme</a>
-
+  <header>
+    <div class="header-left">
+      <h1>Victor Manuel Avendaño Vazquez</h1>
+      <p class="tagline">Estudiante de Ingeniería de Software en la Universidad Veracruzana (UV), enfocado en el desarrollo web y de aplicaciones. Actualmente perfeccionando mi inglés como segundo idioma para crecer profesionalmente en el ámbito internacional del software.</p>
     </div>
-</section>
-
-<!-- SOBRE MÍ -->
-<section id="sobre-mi">
-
-    <h2 class="section-title">Sobre <span>mí</span></h2>
-
-    <div class="about">
-
-        <p>
-            Soy Victor Manuel Avendaño Vázquez y actualmente estudio
-            Ingeniería en Software en la Universidad Veracruzana.
-            Siempre me han llamado la atención las computadoras,
-            la tecnología y la manera en que funcionan los sistemas.
-        </p>
-
-        <br>
-
-        <p>
-            Una de las razones principales por las que elegí esta carrera
-            es porque quiero entender cómo se crean las aplicaciones,
-            los programas y las herramientas digitales que utilizamos
-            todos los días. También me gusta resolver problemas y
-            encontrar diferentes maneras de llegar a una solución.
-        </p>
-
-        <br>
-
-        <p>
-            Además de la tecnología, disfruto mucho las matemáticas y la
-            física. Considero que estas materias ayudan a desarrollar
-            una forma de pensar lógica y analítica, algo que quiero
-            aplicar durante mi formación como ingeniero.
-        </p>
-
+    <img class="photo" src="foto.jpg" alt="Foto de Victor Manuel Avendaño Vazquez">
+    <div class="contact">
+      <span><span class="dot"></span> victorcopy2323@gmail.com</span>
+      <span><span class="dot"></span> +52 274 134 6191</span>
+      <span><span class="dot"></span> Veracruz, México</span>
+      <span><span class="dot"></span> github.com/httpsvictwr.io </span>
+    
     </div>
+  </header>
 
-</section>
+  <div class="grid">
+    <div>
+      <h2 class="section-title">Experiencia</h2>
 
-<!-- ESTUDIOS -->
-<section id="estudios">
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-loc">Freelance</span>
+          <span class="entry-date">2026 - Presente</span>
+        </div>
+        <h3>Desarrollador Web Junior</h3>
+        <p class="org">Proyectos independientes</p>
+        <ul>
+          <li>Desarrollo de sitios web y landing pages para pequeños negocios usando HTML, CSS y JavaScript.</li>
+          <li>Colaboración con clientes para definir requerimientos y entregar soluciones funcionales.</li>
+    
+        </ul>
+      </div>
 
-    <h2 class="section-title">Mi <span>formación</span></h2>
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-loc">Universidad Veracruzana</span>
+          <span class="entry-date">2026 - Presente</span>
+        </div>
+        <h3>Proyectos Académicos</h3>
+        <p class="org">Facultad de Negocios y Tecnologia </p>
+        <ul>
+          <li>Desarrollo de aplicaciones en equipo aplicando metodologías ágiles (Scrum).</li>
+          <li>Implementación de bases de datos relacionales y APIs REST para proyectos escolares.</li>
+          <li>Prácticas de control de versiones con Git y trabajo colaborativo en GitHub.</li>
+        </ul>
+      </div>
 
-    <div class="study-box">
+      <h2 class="section-title" style="margin-top:40px;">Educación</h2>
 
-        <h3>🎓 Universidad Veracruzana</h3>
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-loc">Veracruz, México</span>
+          <span class="entry-date">2022 - Presente</span>
+        </div>
+        <h3> Soporte y Mantenimiento de Equipo de Computo </h3>
+        <p class="org"> CBTIS66 </p>
+      </div>
 
-        <p>
-            Actualmente estudio <strong>Ingeniería en Software</strong>.
-            Mi objetivo es desarrollar los conocimientos y habilidades
-            necesarios para crear soluciones tecnológicas y crecer
-            profesionalmente dentro del área de software.
-        </p>
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-loc">Veracruz, México</span>
+          <span class="entry-date">2025 - Presente</span>
+        </div>
+        <h3>Curso de Inglés</h3>
+        
+    <div>
+      <h2 class="section-title">Habilidades</h2>
 
-        <br>
+      <div class="skill">
+        <div class="skill-label">HTML / CSS</div>
+        <div class="bar"><div class="bar-fill" style="width:20%"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label">JavaScript</div>
+        <div class="bar"><div class="bar-fill" style="width:10%"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label">Python</div>
+        <div class="bar"><div class="bar-fill" style="width:40%"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label">Bases de Datos (SQL)</div>
+        <div class="bar"><div class="bar-fill" style="width:37%"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label">Git / GitHub</div>
+        <div class="bar"><div class="bar-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label">Trabajo en equipo</div>
+        <div class="bar"><div class="bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label">Resolución de problemas</div>
+        <div class="bar"><div class="bar-fill" style="width:75%"></div></div>
+      </div>
 
-        <p>
-            Durante mi formación quiero aprender sobre programación,
-            desarrollo de aplicaciones, bases de datos, redes,
-            sistemas y nuevas tecnologías.
-        </p>
+      <h2 class="section-title" style="margin-top:40px;">Logros</h2>
 
+      <div class="achievement">
+        <h4>Proyecto destacado </h4>
+        <p>Elaboración de CV en GitHub.</p>
+      </div>
+      <div class="achievement">
+        <h4>Certificación en desarrollo web</h4>
+        <p>Curso de CISCO completado.</p>
+      </div>
+
+      <h2 class="section-title" style="margin-top:40px;">Idiomas</h2>
+      <p style="font-size:0.9rem; color:#4a4a4a;">Español (nativo) · Inglés (B1)</p>
+
+      <h2 class="section-title" style="margin-top:40px;">Intereses</h2>
+      <div class="tags">
+        <span class="tag">Programación</span>
+        <span class="tag">Tecnología</span>
+        <span class="tag">Videojuegos</span>
+        <span class="tag">Aprendizaje de idiomas</span>
+        <span class="tag">Software libre</span>
+      </div>
     </div>
+  </div>
 
-</section>
-
-<!-- INTERESES -->
-<section id="intereses">
-
-    <h2 class="section-title">Mis <span>intereses</span></h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>💻 Tecnología</h3>
-            <p>
-                Me interesa conocer cómo funcionan las computadoras,
-                los sistemas y las nuevas tecnologías.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>📐 Matemáticas</h3>
-            <p>
-                Disfruto las matemáticas y especialmente los temas que
-                requieren razonamiento y resolución de problemas.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>🌐 Programación</h3>
-            <p>
-                Quiero aprender diferentes lenguajes y desarrollar
-                proyectos que puedan convertirse en soluciones reales.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>🎮 Videojuegos</h3>
-            <p>
-                También disfruto los videojuegos y me interesa la
-                tecnología que existe detrás de ellos.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- HOBBIES -->
-<section>
-
-    <h2 class="section-title">Cosas que <span>disfruto</span></h2>
-
-    <div class="hobbies">
-
-        <div class="hobby">
-            <div class="icon">🎵</div>
-            <h3>Música</h3>
-            <p>Escuchar música y descubrir nuevos artistas.</p>
-        </div>
-
-        <div class="hobby">
-            <div class="icon">🎮</div>
-            <h3>Videojuegos</h3>
-            <p>Jugar en mi tiempo libre.</p>
-        </div>
-
-        <div class="hobby">
-            <div class="icon">💻</div>
-            <h3>Tecnología</h3>
-            <p>Aprender sobre computadoras y software.</p>
-        </div>
-
-        <div class="hobby">
-            <div class="icon">🧠</div>
-            <h3>Aprender</h3>
-            <p>Conocer cosas nuevas y mejorar mis habilidades.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- METAS -->
-<section id="metas">
-
-    <h2 class="section-title">Mis <span>metas</span></h2>
-
-    <div class="goals">
-
-        <div class="goal">
-            <strong>01.</strong>
-            Terminar mi carrera de Ingeniería en Software y obtener
-            una sólida preparación profesional.
-        </div>
-
-        <div class="goal">
-            <strong>02.</strong>
-            Mejorar constantemente mis conocimientos de programación
-            y desarrollo de software.
-        </div>
-
-        <div class="goal">
-            <strong>03.</strong>
-            Crear proyectos propios que me permitan poner en práctica
-            todo lo que aprenda durante la universidad.
-        </div>
-
-        <div class="goal">
-            <strong>04.</strong>
-            Encontrar oportunidades profesionales dentro del mundo
-            de la tecnología y el desarrollo de software.
-        </div>
-
-        <div class="goal">
-            <strong>05.</strong>
-            Seguir aprendiendo y adaptándome a las nuevas tecnologías.
-        </div>
-
-    </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <p>
-        © 2026 <span>Victor Manuel Avendaño Vázquez</span>
-    </p>
-
-    <p>
-        Ingeniería en Software · Universidad Veracruzana
-    </p>
-</footer>
-```
-
+</div>
 </body>
 </html>
